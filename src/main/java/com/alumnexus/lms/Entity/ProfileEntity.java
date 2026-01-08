@@ -11,11 +11,11 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Entity
+@Table(name= "tbl_profiles")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "tbl_profiles")
 @Builder
 public class ProfileEntity {
 
@@ -34,24 +34,23 @@ public class ProfileEntity {
     // Password -> will be encoded later
     private String password;
     // The role that this person has(should not be empty)
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Role role;
+//    @Enumerated(EnumType.STRING)
+//    @Column(nullable = false)
+//    private Role role;
     // Created at -> cannot be updated by any person
     @Column(updatable = false)
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp
     private LocalDateTime updatedAt;
-    // Mapping the course Assignment
-    @OneToMany(
-            mappedBy = "user",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true,
-            fetch = FetchType.LAZY
-    )
-    // Is this the correct way?
-    // TODO : Ask Akash Mahadev if it is right way to store it.
-    private List<CourseAssignment> courseAssignments;
-    private AccountStatus accountStatus;
+//    // Mapping the course Assignment
+//    @OneToMany(
+//            mappedBy = "user",
+//            cascade = CascadeType.ALL,
+//            orphanRemoval = true,
+//            fetch = FetchType.LAZY
+//    )
+////     Is this the correct way?
+//    private List<CourseAssignment> courseAssignments;
+//    private AccountStatus accountStatus;
 }
