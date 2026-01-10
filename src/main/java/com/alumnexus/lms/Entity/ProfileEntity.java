@@ -33,10 +33,10 @@ public class ProfileEntity {
     private String email;
     // Password -> will be encoded later
     private String password;
-    // The role that this person has(should not be empty)
-//    @Enumerated(EnumType.STRING)
-//    @Column(nullable = false)
-//    private Role role;
+//     The role that this person has(should not be empty)
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Role role;
     // Created at -> cannot be updated by any person
     @Column(updatable = false)
     @CreationTimestamp

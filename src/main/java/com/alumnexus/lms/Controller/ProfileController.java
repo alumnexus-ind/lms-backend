@@ -14,9 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProfileController {
     private final ProfileService profileService;
 
-    @PostMapping("/register")
-    public ResponseEntity<ProfileDTO> regsiterProfile(@RequestBody ProfileDTO profileDTO) {
-        ProfileDTO registeredProfile = profileService.registerProfile(profileDTO);
+    @PostMapping("/register/teacher")
+    public ResponseEntity<ProfileDTO> registerTeacherProfile(@RequestBody ProfileDTO profileDTO) {
+        ProfileDTO registeredProfile = profileService.registerTeacher(profileDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(registeredProfile);
+    }
+
+    @PostMapping("/register/student")
+    public ResponseEntity<ProfileDTO> registerStudentProfile(@RequestBody ProfileDTO profileDTO) {
+        ProfileDTO registeredProfile = profileService.registerStudent(profileDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(registeredProfile);
     }
 }
