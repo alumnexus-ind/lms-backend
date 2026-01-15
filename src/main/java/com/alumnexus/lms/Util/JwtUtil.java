@@ -61,14 +61,17 @@ public class JwtUtil {
         return extractClaim(Claims::getSubject, token);
     }
 
+    // get the user JWT expiration date
     public Date extractExpiration(String token) {
         return extractClaim(Claims::getExpiration, token);
     }
 
+    // check if the user token is expired or not
     private Boolean isTokenExpired(String token) {
         return extractExpiration(token).before(new Date());
     }
 
+    // Validate the user token if it is not expired and our registered user details is equal to log in email
     public Boolean validateToken(String token, UserDetails userDetails) {
         final String email = extractEmail(token);
         return (email.equals(userDetails.getUsername()) && !isTokenExpired(token));
